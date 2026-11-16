@@ -1,26 +1,25 @@
-# Лабораторная работа №4. Rails-приправленный Ruby
+# Лабораторная работа №5. Заполнение макета
 
-Учебное приложение sample app по книге *Ruby on Rails Tutorial* (глава 4).
-Проект продолжает лабораторную работу №3 (статические страницы).
+Учебное приложение sample app по книге *Ruby on Rails Tutorial* (глава 5).
+Проект продолжает лабораторную работу №4.
 
 Выполнил: Мифтахов Р. Н., группа 4411.
 
 ## Что сделано
 
-- хелпер `full_title` в `app/helpers/application_helper.rb` — формирует заголовок страницы;
-- макет `app/views/layouts/application.html.erb` использует `full_title(yield(:title))`;
-- на странице Home убран `provide(:title, ...)`, тест ждёт базовый заголовок;
-- класс `User` в `example_user.rb` (`attr_accessor`, `initialize`, `formatted_email`, `alphabetical_name`);
-- упражнения главы 4 — по одному файлу в каталоге `exercises/`.
+- подключён Bootstrap 3 и собственные стили на Sass (`app/assets/stylesheets/application.scss`, гем `dartsass-rails`);
+- макет разбит на частичные шаблоны `_header.html.erb` и `_footer.html.erb`;
+- именованные маршруты: `root`, `/help`, `/about`, `/contact`, `/signup`;
+- контроллер `Users` с действием `new` — заготовка страницы регистрации;
+- интеграционный тест ссылок макета `test/integration/site_layout_test.rb` и тест хелпера `full_title`.
 
 ## Запуск
 
 ```sh
 bundle install
-bin/rails test          # тесты
-bin/rails server        # http://localhost:3000
-ruby exercises/exercise_5_palindrome_check.rb
-bin/rails runner exercises/exercise_8_array_access.rb
+bin/rails dartsass:build   # собрать CSS из Sass
+bin/rails test             # тесты
+bin/dev                    # сервер + слежение за Sass, http://localhost:3000
 ```
 
-Отчёт по работе: `Отчет_ЛР4_Мифтахов.docx`.
+Отчёт по работе: `Отчет_ЛР5_Мифтахов.docx`.
